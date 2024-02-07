@@ -1,0 +1,148 @@
+// LOCALHOST 
+// SONGS
+### Get all songs GET http://localhost:8080/songs
+
+### Get song by id GET http://localhost:8080/songs/65a60dddc88ca384b22d9e9d
+
+### Create song POST http://localhost:8080/songs
+
+{
+    "title": "Open Arms",
+    "artist": "Journey",
+    "album": "Greatest Hits"
+}
+
+### PUT song PUT http://localhost:8080/songs/6220bcb39cd507e920c75a0b
+
+{
+    "title": "Open Arms",
+    "artist": "Journey",
+    "album": "Greatest Hits"
+}
+
+### DELETE song DELETE http://localhost:8080/songs/6220b775099269ff7b31ceab
+
+// ARTISTS
+### Get all artists GET http://localhost:8080/artists
+
+### Get artist by id GET http://localhost:8080/artists/65a60dddc88ca384b22d9e9d
+
+### Create artist POST http://localhost:8080/artists
+
+{
+    "name": "Journey",
+    "type": "Group"
+}
+
+### PUT artist PUT http://localhost:8080/artists/6220bcb39cd507e920c75a0b
+
+{
+    "name": "Journey",
+    "type": "Group"
+}
+
+### DELETE artist DELETE http://localhost:8080/artists/6220b775099269ff7b31ceab
+
+
+// ALBUMS
+### Get all albums GET http://localhost:8080/albums
+
+### Get album by id GET http://localhost:8080/albums/65a60dddc88ca384b22d9e9d
+
+### Create album POST http://localhost:8080/albums
+
+{
+    "title": "Greatest Hits",
+    "artist": "Journey",
+    "media": "CD",
+    "genre": "Rock",
+    "year": 2006
+}
+
+### PUT album PUT http://localhost:8080/albums/6220bcb39cd507e920c75a0b
+
+{
+    "title": "Greatest Hits",
+    "artist": "Journey",
+    "media": "CD",
+    "genre": "Rock",
+    "year": 2006
+}
+
+### DELETE album DELETE http://localhost:8080/albums/6220b775099269ff7b31ceab
+
+
+// PRODUCTION Deploy 
+
+//SONGS
+### Get all songs GET https://week5service.onrender.com/songs
+
+### Get song by id GET https://week5service.onrender.com/songs/622023f642f9ab4cd6e060b3
+
+### Create song POST https://week5service.onrender.com/songs
+
+{
+    "title": "Open Arms",
+    "artist": "Journey",
+    "album": "Greatest Hits"
+}
+
+### PUT song PUT https://week5service.onrender.com/songs/6220bcb39cd507e920c75a0b
+
+{
+    "title": "Open Arms",
+    "artist": "Journey",
+    "album": "Greatest Hits"
+}
+
+### DELETE song DELETE https://week5service.onrender.com/songs/6220e34083149913680f9a64
+
+// ARTISTS
+### Get all artists GET http://week5service.onrender.com/artists
+
+### Get artist by id GET http://week5service.onrender.com/artists/65a60dddc88ca384b22d9e9d
+
+### Create artist POST http://week5service.onrender.com/artists
+
+{
+    "name": "Journey",
+    "type": "Group"
+}
+
+### PUT artist PUT http://week5service.onrender.com/artists/6220bcb39cd507e920c75a0b
+
+{
+    "name": "Journey",
+    "type": "Group"
+}
+
+### DELETE artist DELETE http://week5service.onrender.com/artists/6220b775099269ff7b31ceab
+
+
+// ALBUMS
+### Get all albums GET http://week5service.onrender.com/albums
+
+### Get album by id GET http://week5service.onrender.com/albums/65a60dddc88ca384b22d9e9d
+
+### Create album POST http://week5service.onrender.com/albums
+
+{
+    "title": "Greatest Hits",
+    "artist": "Journey",
+    "media": "CD",
+    "genre": "Rock",
+    "year": 2006
+}
+
+### PUT album PUT http://week5service.onrender.com/albums/6220bcb39cd507e920c75a0b
+
+{
+    "title": "Greatest Hits",
+    "artist": "Journey",
+    "media": "CD",
+    "genre": "Rock",
+    "year": 2006
+}
+
+### DELETE album DELETE http://week5service.onrender.com/albums/6220b775099269ff7b31ceab
+

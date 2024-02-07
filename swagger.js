@@ -5,11 +5,11 @@ const doc = {
     title: 'My API',
     description: 'Music API'
   },
-  //host: 'week5service.onrender.com',
-  host: 'localhost:8080',
+  host: 'week5service.onrender.com',
+  //host: 'localhost:8080',
   schemes: [
-    //'https'
-    'http'
+    'https'
+    //'http'
   ]
 };
 
