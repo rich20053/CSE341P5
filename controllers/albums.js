@@ -2,7 +2,7 @@ const { isNull } = require('util');
 const mongodb = require('../models/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-// Return all Albums
+// Return all albums
 const getAll = async (req, res, next) => {
   
   const result = await mongodb.getDb().db("music").collection('albums').find();
@@ -12,14 +12,14 @@ const getAll = async (req, res, next) => {
   });
 };
 
-// Return one Album by id
+// Return one album by id
 const getSingle = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
 
   const result = await mongodb
     .getDb()
     .db("music")
-    .collection('Albums')
+    .collection('albums')
     .find({ _id: userId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -27,10 +27,10 @@ const getSingle = async (req, res, next) => {
   });
 };
 
-// Create one Album from body json
+// Create one album from body json
 const createAlbum = async (req, res, next) => {
 
-  // Create an Album
+  // Create an album
   const album = {
     title: req.body.title,
     artist_id: req.body.artist_id,
@@ -43,7 +43,7 @@ const createAlbum = async (req, res, next) => {
   };
 
   // Save Album in the database
-  const result = await mongodb.getDb().db("music").collection('Albums').insertOne(album);
+  const result = await mongodb.getDb().db("music").collection('albums').insertOne(album);
 
   if (result.acknowledged) {
     res.status(201).json(result);
@@ -52,12 +52,12 @@ const createAlbum = async (req, res, next) => {
   }
 };
   
-// Update a single Album
+// Update a single album
 const updateAlbum = async (req, res, next) => {
   
   const userId = new ObjectId(req.params.id);
 
-  // Update an Album
+  // Update an album
   const album = {
     title: req.body.title,
     artist_id: req.body.artist_id,
@@ -70,7 +70,7 @@ const updateAlbum = async (req, res, next) => {
   };
   
   // Update data in database
-  const response = await mongodb.getDb().db("music").collection('Albums').replaceOne({ _id: userId }, album);
+  const response = await mongodb.getDb().db("music").collection('albums').replaceOne({ _id: userId }, album);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
@@ -79,11 +79,11 @@ const updateAlbum = async (req, res, next) => {
   }
 }; 
 
-// Delete one Album
+// Delete one albums
 const deleteAlbum = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
   
-  const response = await mongodb.getDb().db("music").collection('Albums').deleteOne({ _id: userId }, true);
+  const response = await mongodb.getDb().db("music").collection('albums').deleteOne({ _id: userId }, true);
   if (response.deletedCount > 0) {
     res.status(200).send();
   } else {
