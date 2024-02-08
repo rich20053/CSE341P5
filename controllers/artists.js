@@ -15,7 +15,7 @@ const getAll = async (req, res, next) => {
 // Return one artist by id
 const getSingle = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
-
+  console.log("artist single routes");
   const result = await mongodb
     .getDb()
     .db("music")
