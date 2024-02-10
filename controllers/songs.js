@@ -16,11 +16,7 @@ const getAll = async (req, res, next) => {
 const getSingle = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
 
-  const result = await mongodb
-    .getDb()
-    .db("music")
-    .collection('songs')
-    .find({ _id: userId });
+  const result = await mongodb.getDb().db("music").collection('songs').find({ _id: userId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
@@ -33,8 +29,8 @@ const createSong = async (req, res, next) => {
   // Create a song
   const song = {
     title: req.body.title,
-    artist_id: req.body.artist_id,
-    album_id: req.body.album_id,
+    artist_id: new ObjectId(req.body.artist_id),
+    album_id: new ObjectId(req.body.album_id),
     time: req.body.time,
   };
 
@@ -56,8 +52,8 @@ const updateSong = async (req, res, next) => {
   // Update a songs
   const song = {
     title: req.body.title,
-    artist_id: req.body.artist_id,
-    album_id: req.body.album_id,
+    artist_id: new ObjectId(req.body.artist_id),
+    album_id: new ObjectId(req.body.album_id),
     time: req.body.time,
   };
   

@@ -6,6 +6,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
   
   const result = await mongodb.getDb().db("music").collection('albums').find();
+  //console.log(result);
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
@@ -16,11 +17,7 @@ const getAll = async (req, res, next) => {
 const getSingle = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
 
-  const result = await mongodb
-    .getDb()
-    .db("music")
-    .collection('albums')
-    .find({ _id: userId });
+  const result = await mongodb.getDb().db("music").collection('albums').find({ _id: userId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
@@ -30,10 +27,50 @@ const getSingle = async (req, res, next) => {
 // Create one album from body json
 const createAlbum = async (req, res, next) => {
 
+  var artistId = new ObjectId;
+
+  /*
+  // Find the artist
+  if (typeof req.body.artist != "undefined") {
+    console.log("artist block");
+    const artist = req.body.artist;
+    console.log(artist);
+    var myCursor = await mongodb.getDb().db("music").collection('artists').find({ name: artist });
+    console.log("cursor");
+    console.log(myCursor);
+    console.log('myCursor.toArray()');
+    console.log(myCursor.toArray());
+    console.log('myCursor.hasNext()');
+    console.log(myCursor.hasNext());
+    console.log('myCursor.next()');
+    console.log(myCursor.next());
+    var myDocumentList = myCursor.toArray();
+    console.log(myDocumentList.length);
+    var myDocument = myDocumentList[0];
+    console.log("myDocument");
+    console.log(myDocument);
+    if (typeof myDocument != "undefined") {
+      console.log("myDocument not undefined");
+      console.log(myDocument);
+      console.log("artist_id");
+      console.log(myDocument);
+      artistId = new ObjectId(myDocument.artist_id);
+      console.log("reset artistId");
+      console.log(artistId);
+    }
+    console.log("0");
+    console.log(artistId);  
+  }
+  else {
+    */
+    artistId = new ObjectId(req.body.artist_id);
+  //}
+
+  //console.log("1");
   // Create an album
   const album = {
     title: req.body.title,
-    artist_id: req.body.artist_id,
+    artist_id: artistId,
     media: req.body.media,
     genre: req.body.genre,
     year: req.body.year,
@@ -41,9 +78,12 @@ const createAlbum = async (req, res, next) => {
     mins: req.body.mins,
     discnbr: req.body.discnbr
   };
+  //console.log("2");
+  //console.log(album);
 
   // Save Album in the database
   const result = await mongodb.getDb().db("music").collection('albums').insertOne(album);
+  //console.log("3");
 
   if (result.acknowledged) {
     res.status(201).json(result);
@@ -53,14 +93,14 @@ const createAlbum = async (req, res, next) => {
 };
   
 // Update a single album
-const updateAlbum = async (req, res, next) => {
+const updateAlbumById = async (req, res, next) => {
   
   const userId = new ObjectId(req.params.id);
 
   // Update an album
   const album = {
     title: req.body.title,
-    artist_id: req.body.artist_id,
+    artist_id: new ObjectId(req.body.artist_id),
     media: req.body.media,
     genre: req.body.genre,
     year: req.body.year,
@@ -95,7 +135,7 @@ module.exports = {
   getAll, 
   getSingle, 
   createAlbum, 
-  updateAlbum, 
+  updateAlbumById, 
   deleteAlbum 
 };
 

@@ -6,8 +6,10 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res, next) => {
   
   const result = await mongodb.getDb().db("music").collection('artists').find();
+  console.log(result.toArray.length);
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
+    console.log(lists);
     res.status(200).json(lists);
   });
 };
@@ -16,11 +18,7 @@ const getAll = async (req, res, next) => {
 const getSingle = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
   console.log("artist single routes");
-  const result = await mongodb
-    .getDb()
-    .db("music")
-    .collection('artists')
-    .find({ _id: userId });
+  const result = await mongodb.getDb().db("music").collection('artists').find({ _id: userId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);

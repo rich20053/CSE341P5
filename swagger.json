@@ -284,10 +284,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "artist_id": {
                   "example": "any"
                 },
-                "artist_id": {
+                "title": {
                   "example": "any"
                 },
                 "media": {

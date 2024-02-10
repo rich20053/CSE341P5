@@ -11,7 +11,7 @@ router.get('/:id', albumsController.getSingle);
 
 router.post('/', albumsController.createAlbum);
 
-router.put('/:id', albumsController.updateAlbum);
+router.put('/:id', albumsController.updateAlbumById);
 
 router.delete('/:id', albumsController.deleteAlbum);
 

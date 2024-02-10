@@ -5,11 +5,11 @@ const ObjectId = require('mongodb').ObjectId;
 // Return all songs by this artist
 const getAllArtistSongs = async (req, res, next) => {
   const artistId = new ObjectId(req.params.id);
-  console.log("artistsongs routes");
+  console.log("artistsongs Get Artist Songs");
   console.log(req.params.id);
   console.log(artistId);
 
-  const result = await mongodb.getDb().db("music").collection('songs').find({artist_id: artistId});
+  const result = await mongodb.getDb().db("music").collection('songs').find({"artist_id": artistId});
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
@@ -17,10 +17,10 @@ const getAllArtistSongs = async (req, res, next) => {
 };  
 
 const getAll = async (req, res, next) => {
-    const artistId = new ObjectId(req.params.id);
-    console.log("artistsongs routes");
-    console.log(req.params.id);
-    console.log(artistId);
+    //const artistId = new ObjectId(req.params.id);
+    console.log("artistsongs getAll");
+    //console.log(req.params.id);
+    //console.log(artistId);
   
     const result = await mongodb.getDb().db("music").collection('songs').find();
     result.toArray().then((lists) => {
